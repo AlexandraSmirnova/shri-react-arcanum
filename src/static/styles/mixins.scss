@@ -1,0 +1,34 @@
+@mixin text-size-xxs {
+    font-size: var(--font-size-xxs);
+    line-height: var(--line-height-xxs);
+}
+
+@mixin text-size-xs {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+}
+
+@mixin text-size-s {
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
+}
+
+@mixin text-size-m {
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-m);
+}
+
+@mixin text-size-l {
+    font-size: var(--font-size-l);
+    line-height: var(--line-height-l);
+}
+
+@mixin text-weight-l {
+    font-weight: var(--font-weight-l);
+}
+
+@mixin text-accent-first-letter {
+    &:first-letter {
+        color: var(--color-accent);
+    }
+}

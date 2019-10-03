@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.scss';
 import Header from '../Header';
+import Footer from '../Footer';
 
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
         return (
             <div>
                 <Header />
+                <Footer /> 
             </div>
         );
     }
