@@ -16,7 +16,7 @@ let config = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.scss'],
-        modules: [path.resolve('node_modules'), path.resolve('src')]
+        modules: [path.resolve('node_modules'), path.resolve(__dirname, 'src')]
     },
     module: {
         rules: [
@@ -30,6 +30,10 @@ let config = {
             },
             {
                 test: /\.svg$/,
+                loader: 'svg-react-loader'
+            },
+            {
+                test: /\.(jpg|png)$/,
                 use:[{
                     loader: "url-loader",
                     options:{
