@@ -1,0 +1,21 @@
+@import 'static/styles/mixins.scss';
+
+.NavDescription {
+    &-Title {
+        @include text-size-l;
+        @include text-weight-l;
+
+        display: flex;
+        margin-top: 10px;
+    }
+
+    &-Info {
+        @include text-size-s;
+    
+        padding: 11px 0;
+    }
+}
+
+// .FileDescription .FileDescription-TitleElem {
+//     margin-right: 4px;
+// }
