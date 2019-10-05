@@ -1,0 +1,24 @@
+@import 'static/styles/mixins.scss';
+
+.Breadcrumbs {
+    font-size: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+
+    &-Item {
+        @include text-size-s;
+
+        display: inline-block;
+        color: var(--color-text-secondary);
+        cursor: pointer;
+
+        &:not(:last-child):after {
+            content: '/';
+            padding: 0 10px;
+        }
+
+        &:last-child {
+            @include text-weight-l;
+        }
+    }
+}
