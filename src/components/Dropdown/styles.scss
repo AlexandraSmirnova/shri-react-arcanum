@@ -1,0 +1,25 @@
+.Dropdown {
+
+    &-Button {
+        height: 100%;
+        cursor: pointer;
+        user-select: none; 
+    }
+
+    &-Block {
+        display: none;
+        position: absolute;
+        background: #fff;
+        width: 360px;
+        height: auto;
+        max-height: 240px;
+        overflow-y: scroll;
+        box-shadow: 0px 4px 16px rgba(53, 73, 93, 0.2);
+        border-radius: 5px;
+        z-index: 100;
+
+        &_state_open {
+            display: block;
+        }
+    }
+}

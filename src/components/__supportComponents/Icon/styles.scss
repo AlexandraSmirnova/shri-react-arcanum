@@ -1,4 +1,9 @@
 .Icon {
     width: 1em;
     height: 1em;
+
+    &_rotate_180 {
+        transform: rotate(180deg);
+    }
 }
+

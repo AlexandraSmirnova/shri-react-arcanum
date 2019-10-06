@@ -1,0 +1,30 @@
+.IconPlus {
+    &-Icon {
+        display: inline-block;
+
+        &_indent-r {
+            &_s {
+                margin-right: 8px;
+            }
+
+            &_m {
+                margin-right: 12px;
+            }
+        }
+
+        &_indent-l {
+            &_s {
+                margin-left: 8px;
+            }
+
+            &_m {
+                margin-left: 12px;
+            }
+        }
+
+        &_vertical-align_center {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

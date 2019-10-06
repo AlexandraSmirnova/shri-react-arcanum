@@ -1,0 +1,31 @@
+.Tab {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    color: var(--color-text-secondary);
+    position: relative;
+    cursor: pointer;
+
+    & + & {
+        margin-right: 32px;
+    }
+
+    &:hover {
+        color: var(--color-text-primary);
+
+        &:before {
+            background: var(--color-accent);
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: transparent;
+    }
+}
+

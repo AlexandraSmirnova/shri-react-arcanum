@@ -7,7 +7,7 @@ import './styles.scss';
 class Breadcrumbs extends Component {
     getBreadcrumb = (item) => {
         return (
-            <div className="Breadcrumbs-Item">
+            <div className="Breadcrumbs-Item" key={item}>
                 {item}    
             </div>
         );

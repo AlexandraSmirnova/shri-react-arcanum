@@ -3,8 +3,8 @@ import { combineReducers } from "redux";
 
 
 const initialRepositoryStore = {
-    repositories: [],
-    currentRepository: '',
+    all: [],
+    current: '',
 }
 
 const repositories = (state = initialRepositoryStore, action) => {
@@ -12,12 +12,15 @@ const repositories = (state = initialRepositoryStore, action) => {
         case SET_REPOSITORIES:
             return {
                 ...state,
-                repositories: action.payload,
+                all: action.payload,
+                current: action.payload.length && !state.current
+                    ? action.payload[0]
+                    : state.current,
             }
         case SET_CURRENT_REPOSITORY:
             return {
                 ...state,
-                currentRepository: action.payload,
+                current: action.payload,
             }
         default:
             return state;
