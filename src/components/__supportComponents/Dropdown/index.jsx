@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as classnames from 'classnames';
 import Arrow from 'static/svg/arrow.svg';
-import IconPlus from '../__supportComponents/IconPlus';
-import Icon from '../__supportComponents/Icon';
+import IconPlus from '../IconPlus';
+import Icon from '../Icon';
 
 import './styles.scss';
 

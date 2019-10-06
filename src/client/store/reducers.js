@@ -28,8 +28,8 @@ const repositories = (state = initialRepositoryStore, action) => {
 }
 
 const initialDirectoryStore = {
-    path: '/src/sdf',
-    content: ['dir', 'file.txt' ],
+    path: '',
+    content: [],
 }
 
 const directory = (state = initialDirectoryStore, action) => {

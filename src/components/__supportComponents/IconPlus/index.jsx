@@ -4,21 +4,29 @@ import './styles';
 
 class IconPlus extends Component {
     render() {
-        const { className, icon, children, onClick } = this.props;
+        const { className, icon, iconMod, children, onClick } = this.props;
         const ch = classnames(
             'IconPlus',
             className,
         );
+        const iconCh = classnames(
+            'IconPlus-Icon',
+            iconMod
+        )
 
         return (
             <div className={ch} onClick={onClick}>
                 {children}
-                <div className="IconPlus-Icon IconPlus-Icon_indent-l_s">
+                <div className={iconCh}>
                     {icon}
                 </div>
             </div>
         );
     }
+}
+
+IconPlus.defaultProps = {
+    iconMod: "IconPlus-Icon_indent-l_s" 
 }
 
 export default IconPlus;

@@ -1,8 +1,6 @@
 @import 'static/styles/mixins.scss';
 
 .RepositoryToggle {
-    @include text-size-s;
-
     height: 100%;
 
     &-Button {

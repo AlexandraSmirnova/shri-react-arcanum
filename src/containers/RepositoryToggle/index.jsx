@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Dropdown from '../../components/Dropdown';
 import { connect } from 'react-redux';
 import Tab from '../../components/__supportComponents/Tab';
-import './styles.scss';
 import { setCurrentRepository } from '../../client/store/actions';
+import Dropdown from '../../components/__supportComponents/Dropdown';
+import './styles.scss';
 
 
 class RepositoryToggle extends Component {
     renderListItem = (item) => (
-        <div 
+        <div
             className="RepositoryToggle-Item"
             onClick={() => this.props.onRepositorySelect(item)}
             key={item}

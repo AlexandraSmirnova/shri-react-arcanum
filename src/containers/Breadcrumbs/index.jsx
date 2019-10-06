@@ -14,13 +14,14 @@ class Breadcrumbs extends Component {
     }
 
     render() {
-        const { path } = this.props;
+        const { path, current } = this.props;
         const items = path
             .split('/')
             .filter((item) => item);
 
         return (
             <div className="Breadcrumbs">
+                {this.getBreadcrumb(current)}
                 {items.map(this.getBreadcrumb)}
             </div>
         );
@@ -29,6 +30,7 @@ class Breadcrumbs extends Component {
 
 const mapStateToProps = (state) => ({
     path: state.directory.path,
+    current: state.repositories.current
 });
 
 export default connect(mapStateToProps)(Breadcrumbs);
