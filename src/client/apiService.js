@@ -9,11 +9,11 @@ const api = (url) =>
 export const fetchRepos = () => 
     api(API_URL);
 
-export const fetchTree = (repoId, path) => {
+export const fetchTree = (repoId, branch, path) => {
     let url = `${API_URL}/${repoId}`;
 
-    if (path) {
-        url = `${url}/tree/${path}`;
+    if (path && branch) {
+        url = `${url}/tree/${branch}/${path}`;
     }
 
     return api(url);

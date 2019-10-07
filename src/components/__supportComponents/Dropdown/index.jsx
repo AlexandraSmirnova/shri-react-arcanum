@@ -13,10 +13,10 @@ class Dropdown extends Component {
     }
 
     handleClick = () => {
-        const { onCLick } = this.props;
+        const { onClick } = this.props;
 
-        if (onCLick) {
-            this.props.onClick();
+        if (onClick) {
+            onClick();
         }
 
         this.setState({

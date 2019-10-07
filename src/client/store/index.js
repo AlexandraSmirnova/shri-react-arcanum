@@ -2,7 +2,7 @@ import rootReducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { setRepositoriesThunk, setDirectoryContentThunk, initThunk } from './thunks';
+import { initThunk } from './thunks';
 
 
 const middlewares = [thunk];

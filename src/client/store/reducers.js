@@ -1,4 +1,4 @@
-import { SET_DIRECTORY_PATH, SET_DIRECTORY_CONTENT, SET_REPOSITORIES, SET_CURRENT_REPOSITORY } from "./actionTypes";
+import { SET_DIRECTORY_PATH, SET_DIRECTORY_CONTENT, SET_REPOSITORIES, SET_CURRENT_REPOSITORY, SET_CURRENT_BRANCH, SET_LIST_OF_BRANCHES } from "./actionTypes";
 import { combineReducers } from "redux";
 
 
@@ -49,7 +49,30 @@ const directory = (state = initialDirectoryStore, action) => {
     }
 }
 
+const initialBranchStore = {
+    current: 'master',
+    list: [],
+}
+
+const branches = (state = initialBranchStore, action) => {
+    switch (action.type) {
+        case SET_CURRENT_BRANCH:
+            return {
+                ...state,
+                content: action.payload,
+            }
+        case SET_LIST_OF_BRANCHES:
+            return {
+                ...state,
+                list: action.payload,
+            }
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     repositories,
     directory,
+    branches,
 })

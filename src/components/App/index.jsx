@@ -26,7 +26,7 @@ class App extends Component {
                         <Route path="/commit">
                             <Commit />
                         </Route>
-                        <Route path="/file">
+                        <Route path="/file/:name">
                             <File />
                         </Route>
                         <Route path="/history">

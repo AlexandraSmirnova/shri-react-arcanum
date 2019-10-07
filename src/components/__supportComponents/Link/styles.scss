@@ -2,4 +2,6 @@
     color: var(--color-link);
     text-decoration: none;
     outline: none;
+    cursor: pointer;
+    user-select: none;
 }

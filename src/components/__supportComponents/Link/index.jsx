@@ -3,11 +3,20 @@ import './styles.scss';
 
 class Link extends Component {
     render() {
-        const { children, linkHref } = this.props;
+        const { children, linkHref, onClick } = this.props;
+
+        if (linkHref) {
+            return (
+                <a className="Link" href={linkHref}>
+                    {children}
+                </a>
+            ); 
+        }
+
         return (
-            <a className="Link" href={linkHref}>
+            <div className="Link" onClick={onClick}>
                 {children}
-            </a>
+            </div>
         );
     }
 }

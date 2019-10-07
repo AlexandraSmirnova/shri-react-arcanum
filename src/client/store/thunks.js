@@ -16,7 +16,7 @@ export const setDirectoryContentThunk = (path) => (dispatch, getState) => {
         return;
     }
 
-    fetchTree(state.repositories.current, path) 
+    fetchTree(state.repositories.current, state.branches.current, path) 
         .then((res) => {
             dispatch(setDirectoryPath(path))
             dispatch(setDirectoryContent(res))
