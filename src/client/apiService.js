@@ -18,4 +18,8 @@ export const fetchTree = (repoId, branch, path) => {
 
     return api(url);
 }
+
+export const fetchFileContent = (repoId, path, branch='master') => 
+    api(`${API_URL}/${repoId}/blob/${branch}/${path}`);
+
   
