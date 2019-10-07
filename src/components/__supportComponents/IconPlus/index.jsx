@@ -4,9 +4,10 @@ import './styles';
 
 class IconPlus extends Component {
     render() {
-        const { className, icon, iconMod, children, onClick } = this.props;
+        const { className, icon, iconMod, children, onClick, right } = this.props;
         const ch = classnames(
             'IconPlus',
+            right && 'IconPlus_i-position_right',
             className,
         );
         const iconCh = classnames(

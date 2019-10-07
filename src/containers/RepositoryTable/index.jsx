@@ -6,13 +6,18 @@ import Folder from 'static/svg/folder.svg';
 import Table from '../../components/Table';
 import IconPlus from '../../components/__supportComponents/IconPlus';
 
-const extraCellClassNames = ['', 'Table-Cell_fraction_col_2', '', '', 'Table-Cell_align_right'];
+const extraCellClassNames = {
+    2: 'Table-Cell_fraction_col-2', 
+    4: 'Table-Cell_align_right'
+};
+
 const headers = ['Name', 'Last commit', 'Commit message', 'Commitier', 'Updater'];
 
 class RepositoryTable extends Component {
     getTableCellItem = (item, index) => ({
         content: item,
-        className: extraCellClassNames[index]
+        className: extraCellClassNames.hasOwnProperty(index) 
+            && extraCellClassNames[index],
     })
 
     wrapContentItem = (item) => {
@@ -22,11 +27,12 @@ class RepositoryTable extends Component {
                 <IconPlus
                     icon={icon}
                     iconMod="IconPlus-Icon_indent-r_s"
+                    right
                 >
-                    <Link to="/file">{item.name}</Link>
+                    <Link to="/file" className="Link">{item.name}</Link>
                 </IconPlus>
             ),
-            <Link to="/file">43dfse</Link>,
+            <Link to="/file" className="Link">43dfse</Link>,
             "Some fixes was commited",
             "Author",
             "2 days ago"

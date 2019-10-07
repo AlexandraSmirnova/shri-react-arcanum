@@ -1,4 +1,5 @@
 .IconPlus {
+    
     &-Icon {
         display: inline-block;
 
@@ -11,20 +12,26 @@
                 margin-right: 12px;
             }
         }
-
+        
         &_indent-l {
             &_s {
                 margin-left: 8px;
             }
-
+            
             &_m {
                 margin-left: 12px;
             }
         }
-
+        
         &_vertical-align_center {
             display: flex;
             align-items: center;
         }
+    }
+    
+    &_i-position_right {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
     }
 }
