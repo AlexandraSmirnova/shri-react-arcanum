@@ -1,5 +1,5 @@
 import { fetchRepos, fetchTree } from "../apiService";
-import { setRepositories, setDirectoryContent, setDirectoryPath } from "./actions";
+import { setRepositories, setDirectoryContent, setDirectoryPath, setCurrentRepository } from "./actions";
 
 
 
@@ -19,6 +19,15 @@ export const setDirectoryContentThunk = (path) => (dispatch, getState) => {
     fetchTree(state.repositories.current, state.branches.current, path) 
         .then((res) => {
             dispatch(setDirectoryPath(path))
+            dispatch(setDirectoryContent(res))
+        })
+        .catch(() => []);
+}
+
+export const setCurrentRepositoryThunk = (repo) => (dispatch, getState) => {
+    fetchTree(repo) 
+        .then((res) => {
+            dispatch(setCurrentRepository(repo))
             dispatch(setDirectoryContent(res))
         })
         .catch(() => []);

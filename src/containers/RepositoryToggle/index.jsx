@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tab from '../../components/__supportComponents/Tab';
-import { setCurrentRepository } from '../../client/store/actions';
 import Dropdown from '../../components/__supportComponents/Dropdown';
 import './styles.scss';
+import { setCurrentRepositoryThunk } from '../../client/store/thunks';
 
 
 class RepositoryToggle extends Component {
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onRepositorySelect: (item) => {
-        dispatch(setCurrentRepository(item));
+        dispatch(setCurrentRepositoryThunk(item));
     }
 })
 

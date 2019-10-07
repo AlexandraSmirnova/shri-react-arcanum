@@ -70,8 +70,10 @@ const mapStateToProps = (state) => ({
     content: state.directory.content,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    onСhangeDirectory: (path) => dispatch(setDirectoryContentThunk(path))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    onСhangeDirectory: (path) =>  {
+        dispatch(setDirectoryContentThunk(path));
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepositoryTable);

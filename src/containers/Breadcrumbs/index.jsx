@@ -50,13 +50,15 @@ class Breadcrumbs extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    onСhangePath: (path) => dispatch(setDirectoryContentThunk(path))
-})
 
 const mapStateToProps = (state) => ({
     path: getPathArray(state.directory.path),
     current: state.repositories.current
 });
+
+const mapDispatchToProps = (dispatch) => ({
+    onСhangePath: (path) => 
+        dispatch(setDirectoryContentThunk(path))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Breadcrumbs);
