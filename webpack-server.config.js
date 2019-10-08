@@ -9,7 +9,6 @@ const BUILD_PATH = path.resolve(__dirname, 'build');
 const PUBLIC_PATH = path.resolve(SRC_PATH, 'public');
 const SERVER_PATH = path.resolve(BUILD_PATH,  'server');
 
-console.log('DEBUG', DEBUG);
 let config = {
     mode: DEBUG ? 'development': 'production',
     entry:  path.resolve(SRC_PATH, 'server/index.js'),

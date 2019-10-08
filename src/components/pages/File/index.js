@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import './styles.scss';
+import React from 'react';
 import FileEditor from '../../../containers/FileEditor';
+import Breadcrumbs from '../../../containers/Breadcrumbs';
 
-class File extends Component {
-    render() {
-        console.log(this.props);
-        return (
-            <div>
-               <FileEditor />
-            </div>
-        );
-    }
+const File = ({ match }) => {
+    return (
+        <div>
+            <Breadcrumbs />
+            <FileEditor filePath={match.params.path} />
+        </div>
+    );
 }
 
 export default File;

@@ -17,18 +17,15 @@ class App extends Component {
                 <div className="App-Content">
 
                     <Switch>
-                        <Route exact path="/">
-                            <Main />
-                        </Route>
+                        <Route exact path="/" component={Main} />
+                        <Route path="/tree/:path([^/]*)" component={Main} />
                         <Route path="/branches">
                             <Branches />
                         </Route>
                         <Route path="/commit">
                             <Commit />
                         </Route>
-                        <Route path="/file/:name">
-                            <File />
-                        </Route>
+                        <Route path="/file/:path([^/]*)" component={File} />
                         <Route path="/history">
                             <History />
                         </Route>

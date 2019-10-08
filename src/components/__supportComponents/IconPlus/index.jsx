@@ -12,7 +12,7 @@ class IconPlus extends Component {
         );
         const iconCh = classnames(
             'IconPlus-Icon',
-            iconMod
+            `IconPlus-Icon_${iconMod}`
         )
 
         return (
@@ -27,7 +27,7 @@ class IconPlus extends Component {
 }
 
 IconPlus.defaultProps = {
-    iconMod: "IconPlus-Icon_indent-l_s" 
+    iconMod: "indent-l_s" 
 }
 
 export default IconPlus;

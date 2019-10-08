@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom'
+import { setDirectoryContentThunk } from '../../client/store/thunks';
 
 import './styles.scss';
-import { setDirectoryContentThunk } from '../../client/store/thunks';
+
 
 const getPathArray = (pathString) => pathString
     .split('/')
@@ -19,10 +21,8 @@ class Breadcrumbs extends Component {
         }
     }
 
-    handleBreadcrumbClick = (index) => () => {
+    handleBreadcrumbClick = (pathToItem) => () => {
         const { onСhangePath, path } = this.props;
-        const { items } = this.state;
-        const pathToItem = items.slice(0, index + 1).join('/');
 
         if (pathToItem !== path) {
             onСhangePath(pathToItem);
@@ -30,10 +30,18 @@ class Breadcrumbs extends Component {
     }
 
     getBreadcrumb = (item, index) => {
+        const { items } = this.state;
+        const pathToItem = index !== '-1' ? items.slice(0, index + 1).join('/') : '';
+        
         return (
-            <div className="Breadcrumbs-Item" key={item} onClick={this.handleBreadcrumbClick(index)}>
-                {item}    
-            </div>
+            <RouterLink
+                to={pathToItem ? `/tree/${pathToItem}` : '/'}
+                className="Breadcrumbs-Item"
+                key={item}
+                onClick={this.handleBreadcrumbClick(pathToItem)}
+            >
+                {item}
+            </RouterLink>
         );
     }
 
@@ -43,7 +51,7 @@ class Breadcrumbs extends Component {
 
         return (
             <div className="Breadcrumbs">
-                {this.getBreadcrumb(current)}
+                {this.getBreadcrumb(current, -1)}
                 {items.map(this.getBreadcrumb)}
             </div>
         );
@@ -57,7 +65,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onСhangePath: (path) => 
+    onСhangePath: (path) =>
         dispatch(setDirectoryContentThunk(path))
 })
 

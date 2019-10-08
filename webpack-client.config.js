@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const distPath = path.join(__dirname,  'build/client');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
-console.log('DEBAG', DEBUG);
 
 let config = {
     mode: DEBUG ? 'development': 'production',

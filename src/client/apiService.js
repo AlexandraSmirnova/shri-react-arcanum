@@ -10,7 +10,7 @@ export const fetchRepos = () =>
     api(API_URL);
 
 export const fetchTree = (repoId, branch, path) => {
-    let url = `${API_URL}/${repoId}`;
+    let url = `${API_URL}${repoId}`;
 
     if (path && branch) {
         url = `${url}/tree/${branch}/${path}`;
@@ -20,6 +20,6 @@ export const fetchTree = (repoId, branch, path) => {
 }
 
 export const fetchFileContent = (repoId, path, branch='master') => 
-    api(`${API_URL}/${repoId}/blob/${branch}/${path}`);
+    api(`${API_URL}${repoId}/blob/${branch}/${path}`);
 
   

@@ -1,5 +1,5 @@
-import { fetchRepos, fetchTree } from "../apiService";
-import { setRepositories, setDirectoryContent, setDirectoryPath, setCurrentRepository } from "./actions";
+import { fetchRepos, fetchTree, fetchFileContent } from "../apiService";
+import { setRepositories, setDirectoryContent, setDirectoryPath, setCurrentRepository, setFileData, clearFileData } from "./actions";
 
 
 
@@ -24,13 +24,29 @@ export const setDirectoryContentThunk = (path) => (dispatch, getState) => {
         .catch(() => []);
 }
 
-export const setCurrentRepositoryThunk = (repo) => (dispatch, getState) => {
+export const setCurrentRepositoryThunk = (repo) => (dispatch) => {
     fetchTree(repo) 
         .then((res) => {
             dispatch(setCurrentRepository(repo))
             dispatch(setDirectoryContent(res))
         })
         .catch(() => []);
+}
+
+
+export const setFileContentThunk = (filePath) => (dispatch, getState) => {
+    const state = getState();
+
+    if (!state.repositories.current) {
+        return;
+    }
+
+    fetchFileContent(state.repositories.current, filePath)
+        .then((res) => {
+            dispatch(setFileData({ path: filePath, content: JSON.parse(res) }))
+            dispatch(setDirectoryPath(filePath))
+        })
+        .catch((e) => dispatch(clearFileData()));
 }
 
 /** Middleware, для похода за всеми начальными данными */

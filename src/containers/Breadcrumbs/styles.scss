@@ -12,6 +12,8 @@
         color: var(--color-text-secondary);
         user-select: none;
         cursor: pointer;
+        text-decoration: none;
+        outline: none;
 
         &:not(:last-child):after {
             content: '/';

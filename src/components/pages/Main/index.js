@@ -3,16 +3,14 @@ import NavDescription from '../../NavDescription';
 import Breadcrumbs from '../../../containers/Breadcrumbs';
 import RepositoryTable from '../../../containers/RepositoryTable';
 
-import './styles.scss';
-
-
 class Main extends Component {
     render() {
+        const { match } = this.props;
         return (
             <div>
                 <Breadcrumbs />
                 <NavDescription />
-                <RepositoryTable />
+                <RepositoryTable contentPath={match.params.path} />
             </div>
         );
     }

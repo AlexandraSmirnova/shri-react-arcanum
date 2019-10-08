@@ -1,13 +1,18 @@
-import { SET_DIRECTORY_PATH, SET_DIRECTORY_CONTENT, SET_REPOSITORIES, SET_CURRENT_REPOSITORY, SET_CURRENT_BRANCH, SET_LIST_OF_BRANCHES } from "./actionTypes";
+import { 
+    SET_DIRECTORY_PATH, SET_DIRECTORY_CONTENT, SET_REPOSITORIES, 
+    SET_CURRENT_REPOSITORY, SET_CURRENT_BRANCH, SET_LIST_OF_BRANCHES, 
+    SET_FILE_DATA,
+    CLEAR_FILE_DATA
+} from "./actionTypes";
 import { combineReducers } from "redux";
 
 
-const initialRepositoryStore = {
+const initialRepositoryState = {
     all: [],
     current: '',
 }
 
-const repositories = (state = initialRepositoryStore, action) => {
+const repositories = (state = initialRepositoryState, action) => {
     switch (action.type) {
         case SET_REPOSITORIES:
             return {
@@ -27,12 +32,12 @@ const repositories = (state = initialRepositoryStore, action) => {
     }
 }
 
-const initialDirectoryStore = {
+const initialDirectoryState = {
     path: '',
     content: [],
 }
 
-const directory = (state = initialDirectoryStore, action) => {
+const directory = (state = initialDirectoryState, action) => {
     switch (action.type) {
         case SET_DIRECTORY_CONTENT:
             return {
@@ -49,12 +54,12 @@ const directory = (state = initialDirectoryStore, action) => {
     }
 }
 
-const initialBranchStore = {
+const initialBranchState = {
     current: 'master',
     list: [],
 }
 
-const branches = (state = initialBranchStore, action) => {
+const branches = (state = initialBranchState, action) => {
     switch (action.type) {
         case SET_CURRENT_BRANCH:
             return {
@@ -71,8 +76,37 @@ const branches = (state = initialBranchStore, action) => {
     }
 }
 
+const initialFileState = {
+    name: '',
+    path: '',
+    content: null,
+    lastUpdate: null,
+}
+
+const file = (state = initialFileState, action) => {
+    switch (action.type) {
+        case SET_FILE_DATA: {
+            const pathArr = action.payload.path.split('/').filter((i) => i);
+
+            return {
+                ...state,
+                name:  pathArr[pathArr.length - 1],
+                path: action.payload.path,
+                content: action.payload.content,
+                lastUpdate: Date.now(),
+            }
+        }
+        case CLEAR_FILE_DATA:
+            return initialFileState;
+        default:
+            return state;
+    }
+}
+
+
 export default combineReducers({
     repositories,
     directory,
     branches,
+    file
 })

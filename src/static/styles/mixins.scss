@@ -32,3 +32,7 @@
         color: var(--color-accent);
     }
 }
+
+@mixin font-mono {
+    font-family: 'PT Mono', monospace;
+}

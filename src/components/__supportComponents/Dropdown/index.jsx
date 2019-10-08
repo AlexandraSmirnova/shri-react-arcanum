@@ -45,7 +45,7 @@ class Dropdown extends Component {
         return (
             <div className={mainCh}>
                 <IconPlus
-                    icon={<Icon className={iconCh}>{<Arrow />}</Icon>}
+                    icon={<Icon className={iconCh}><Arrow /></Icon>}
                     className="Dropdown-Button"
                     onClick={this.handleClick}
                 >
