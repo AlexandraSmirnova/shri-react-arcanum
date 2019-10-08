@@ -6,7 +6,7 @@ const app = express();
 
 const TEMPLATE_DIR = path.join(__dirname, '../public');
 
-app.get('/', (req, res) => {
+app.get('/:any?', (req, res) => {
     res.setHeader('content-type', 'html');
     res.sendFile('index.html', { root: TEMPLATE_DIR });
 });
