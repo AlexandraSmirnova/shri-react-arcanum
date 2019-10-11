@@ -6,6 +6,7 @@ import { setFileContentThunk } from '../../client/store/thunks';
 import './styles.scss';
 import IconPlus from '../../components/__supportComponents/IconPlus';
 import Icon from '../../components/__supportComponents/Icon';
+import Error from '../../components/__supportComponents/Error';
 
 
 class FileEditor extends Component {
@@ -27,7 +28,7 @@ class FileEditor extends Component {
     render() {
         const { content, name } = this.props;
         if (!content) {
-            return <div>Файл не найден</div>
+            return <Error title="404" message="Файл не найден" />;
         }
 
         return (

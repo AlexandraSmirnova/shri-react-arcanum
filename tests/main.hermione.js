@@ -27,7 +27,7 @@ describe('initialization', () => {
         return this.browser
             .url('/')
             .getText('.RepositoryToggle')
-            .then(function (exists) {
+            .then((exists) => {
                 assert.ok(exists, 'Logo exists')
             });
     });
