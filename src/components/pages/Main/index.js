@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavDescription from '../../NavDescription';
+import NavDescription from '../../../containers/NavDescription';
 import Breadcrumbs from '../../../containers/Breadcrumbs';
 import RepositoryTable from '../../../containers/RepositoryTable';
 

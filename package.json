@@ -11,7 +11,8 @@
     "build:client": "cross-env NODE_ENV=production webpack --config webpack-client.config.js",
     "dev:client": "cross-env NODE_ENV=development webpack --config webpack-client.config.js --watch",
     "build": "yarn clean && yarn build:client && yarn build:server && yarn start:server",
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "test": "hermione"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -25,7 +26,9 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "hermione": "^2.13.0",
+    "hermione-custom-commands": "file:hermione-custom-commands",
     "mocha": "^6.2.1",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.3",
     "sass-loader": "^8.0.0",
