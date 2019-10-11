@@ -18,9 +18,9 @@ module.exports = {
     },
 
     plugins: {
-        // 'html-reporter/hermione': {
-        //     path: 'hermione-html-reporter'
-        // },
+        'html-reporter/hermione': {
+            path: 'hermione-html-reporter'
+        },
         'hermione-custom-commands': true
     }
 };

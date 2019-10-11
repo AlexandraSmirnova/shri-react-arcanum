@@ -25,7 +25,7 @@ describe('navigation in table', () => {
             .url('/')
             .waitForExist(fileLinkSelector, 3000)
             .click(fileLinkSelector)
-            .assertExists('.FileEditor', 'File content shown');
+            .assertExists('.FileEditor', 'File content was not shown');
     });
 })
 
@@ -37,6 +37,6 @@ describe('navigation in breadcrumbs', () => {
             .url('/file/src/index.js')
             .waitForExist(breadcrumbSelector, 3000)
             .click(breadcrumbSelector)
-            .assertExists('.Table', 'Directory content is shown')
+            .assertExists('.Table', 'Directory content was not shown')
     });
 });
