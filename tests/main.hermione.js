@@ -26,10 +26,7 @@ describe('initialization', () => {
     it('should initialize repository', function () {
         return this.browser
             .url('/')
-            .getText('.RepositoryToggle')
-            .then((exists) => {
-                assert.ok(exists, 'Logo exists')
-            });
+            .assertExists('.Table', 'Repository is initialized');
     });
 });
 
