@@ -31,18 +31,12 @@ describe('navigation in table', () => {
 
 describe('navigation in breadcrumbs', () => {
     it('click on first breadcrumb navigate to root dir of repository', function () {
+        const breadcrumbSelector = '.Breadcrumbs .Breadcrumbs-Item:first-child';
 
-    });
-
-    it('click on previous breadcrumb shows right content of directory', function () {
-
-    });
-
-    it('click on breadcrumb in the middle of path shows right content of directory', function () {
-
-    });
-
-    it('click on last breadcrumb do not change content of directory', function () {
-
+        return this.browser 
+            .url('/file/src/index.js')
+            .waitForExist(breadcrumbSelector, 3000)
+            .click(breadcrumbSelector)
+            .assertExists('.Table', 'Directory content is shown')
     });
 });
