@@ -47,16 +47,4 @@ module.exports = (hermione, opts) => {
                 });
         });
     });
-
-    // hermione.on(hermione.events.SESSION_END, async () => {
-    //     // Удаление скачанных репозиториев после проверки
-
-    //     const deleteRepo = (url) => {
-    //         fetch(`http://127.0.0.1:3000/api/repos/${url}`, {
-    //             method: 'delete',
-    //         })
-    //     };
-
-    //     REPOS_FOR_TESTS.map(deleteRepo);
-    // });
 }
