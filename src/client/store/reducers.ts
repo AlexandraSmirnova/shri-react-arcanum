@@ -1,18 +1,17 @@
 import { 
     SET_DIRECTORY_PATH, SET_DIRECTORY_CONTENT, SET_REPOSITORIES, 
-    SET_CURRENT_REPOSITORY, SET_CURRENT_BRANCH, SET_LIST_OF_BRANCHES, 
-    SET_FILE_DATA,
-    CLEAR_FILE_DATA
+    SET_CURRENT_REPOSITORY, SET_FILE_DATA, CLEAR_FILE_DATA
 } from "./actionTypes";
 import { combineReducers } from "redux";
+import { FileState, ActionRedux, DirectoryState, RepositoryState } from "./types";
 
 
-const initialRepositoryState = {
+const initialRepositoryState: RepositoryState = {
     all: [],
     current: '',
 }
 
-const repositories = (state = initialRepositoryState, action) => {
+const repositories = (state = initialRepositoryState, action: ActionRedux) => {
     switch (action.type) {
         case SET_REPOSITORIES:
             return {
@@ -20,7 +19,7 @@ const repositories = (state = initialRepositoryState, action) => {
                 all: action.payload,
                 current: action.payload.length && !state.current
                     ? action.payload[0]
-                    : state.current,
+                    : state.current, 
             }
         case SET_CURRENT_REPOSITORY:
             return {
@@ -32,12 +31,12 @@ const repositories = (state = initialRepositoryState, action) => {
     }
 }
 
-const initialDirectoryState = {
+const initialDirectoryState: DirectoryState = {
     path: '',
     content: [],
 }
 
-const directory = (state = initialDirectoryState, action) => {
+const directory = (state = initialDirectoryState, action: ActionRedux) => {
     switch (action.type) {
         case SET_DIRECTORY_CONTENT:
             return {
@@ -59,34 +58,17 @@ const initialBranchState = {
     list: [],
 }
 
-const branches = (state = initialBranchState, action) => {
-    switch (action.type) {
-        case SET_CURRENT_BRANCH:
-            return {
-                ...state,
-                content: action.payload,
-            }
-        case SET_LIST_OF_BRANCHES:
-            return {
-                ...state,
-                list: action.payload,
-            }
-        default:
-            return state;
-    }
-}
-
-const initialFileState = {
+const initialFileState: FileState = {
     name: '',
     path: '',
     content: null,
     lastUpdate: null,
 }
 
-const file = (state = initialFileState, action) => {
+const file = (state = initialFileState, action: ActionRedux) => {
     switch (action.type) {
         case SET_FILE_DATA: {
-            const pathArr = action.payload.path.split('/').filter((i) => i);
+            const pathArr: string[] = action.payload.path.split('/').filter((i: string) => i);
 
             return {
                 ...state,
@@ -107,6 +89,5 @@ const file = (state = initialFileState, action) => {
 export default combineReducers({
     repositories,
     directory,
-    branches,
-    file
+    file,
 })

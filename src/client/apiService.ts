@@ -9,9 +9,9 @@ export const fetchRepos = (): Promise<ApiReposReponse> => api(API_URL);
 
 export const fetchTree = (
     repoId: string,
-    branch: string,
-    path: string
-): Promise<ContentDirectoryData> => {
+    branch?: string,
+    path?: string
+): Promise<ContentDirectoryData[]> => {
     let url = `${API_URL}${repoId}`;
 
     if (path && branch) {
@@ -25,6 +25,6 @@ export const fetchFileContent = (
     repoId: string,
     path: string,
     branch: string ='master'
-): Promise<FileContent> => api(`${API_URL}${repoId}/blob/${branch}/${path}`);
+): Promise<string> => api(`${API_URL}${repoId}/blob/${branch}/${path}`);
 
   

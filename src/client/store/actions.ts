@@ -3,31 +3,17 @@ import {
     SET_FILE_DATA, CLEAR_FILE_DATA
 } from "./actionTypes";
 import { ContentDirectoryData, FileContent } from "../types";
+import { action } from 'typesafe-actions';
 
 
-export const setRepositories = (repos: string[]) => ({
-    type: SET_REPOSITORIES,
-    payload: repos,
-})
+export const setRepositories = (repos: string[]) => action(SET_REPOSITORIES, repos);
 
-export const setCurrentRepository = (repo: string) => ({
-    type: SET_CURRENT_REPOSITORY,
-    payload: repo,
-})
+export const setCurrentRepository = (repo: string) => action(SET_CURRENT_REPOSITORY, repo);
 
-export const setDirectoryContent = (content: ContentDirectoryData[]) => ({
-    type: SET_DIRECTORY_CONTENT,
-    payload: content,
-})
+export const setDirectoryContent = (content: ContentDirectoryData[]) => action(SET_DIRECTORY_CONTENT, content);
 
-export const setDirectoryPath = (path: string) => ({
-    type: SET_DIRECTORY_PATH,
-    payload: path,
-})
+export const setDirectoryPath = (path: string) => action(SET_DIRECTORY_PATH, path);
 
-export const setFileData = (data: FileContent) => ({
-    type: SET_FILE_DATA,
-    payload: data,
-})
+export const setFileData = (data: { path: string, content: FileContent}) => action(SET_FILE_DATA, data);
 
-export const clearFileData = () => ({ type: CLEAR_FILE_DATA })
+export const clearFileData = () => action(CLEAR_FILE_DATA);
