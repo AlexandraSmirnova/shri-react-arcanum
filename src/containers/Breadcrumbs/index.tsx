@@ -1,37 +1,48 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom'
 import { setDirectoryContentThunk } from '../../client/store/thunks';
+import { State as ReduxState, ThunkDispatchWrap } from '../../client/store/types';
 
 import './styles.scss';
 
 
-const getPathArray = (pathString) => pathString
+interface Props {
+    current: string;
+    path: string[];
+    onСhangePath: (pathToItem: string) => void;
+};
+
+interface State {
+    items: string[];
+}
+
+const getPathArray = (pathString: string): string[] => pathString
     .split('/')
     .filter((item) => item);
 
-class Breadcrumbs extends Component {
+class Breadcrumbs extends React.Component<Props, State> {
     state = {
         items: this.props.path,
     }
 
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps(newProps: Props) {
         if (newProps.path !== this.props.path) {
             this.setState({ items: newProps.path });
         }
     }
 
-    handleBreadcrumbClick = (pathToItem) => () => {
+    handleBreadcrumbClick = (pathToItem: string) => () => {
         const { onСhangePath, path } = this.props;
 
-        if (pathToItem !== path) {
+        if (pathToItem !== path.join('/')) {
             onСhangePath(pathToItem);
         }
     }
 
-    getBreadcrumb = (item, index) => {
+    getBreadcrumb = (item: string, index: number) => {
         const { items } = this.state;
-        const pathToItem = index !== '-1' ? items.slice(0, index + 1).join('/') : '';
+        const pathToItem = index !== -1 ? items.slice(0, index + 1).join('/') : '';
         
         return (
             <RouterLink
@@ -59,13 +70,13 @@ class Breadcrumbs extends Component {
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: ReduxState) => ({
     path: getPathArray(state.directory.path),
     current: state.repositories.current
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onСhangePath: (path) =>
+const mapDispatchToProps = (dispatch: ThunkDispatchWrap) => ({
+    onСhangePath: (path: string) =>
         dispatch(setDirectoryContentThunk(path))
 })
 
