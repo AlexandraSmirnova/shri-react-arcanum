@@ -1,13 +1,18 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "jsx": "react",
         "strict": true,
         "removeComments": true,
+        "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "sourceMap": true,
         "lib": [
             "es2015",
         ]
+        // "paths": {
+        //     "static/*": ["./src/static/*"]
+        // },
     },
     "exclude": [
         "node_modules"
