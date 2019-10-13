@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Link from '../../components/__supportComponents/Link';
 import './styles.scss';
-import Link from '../__supportComponents/Link';
 
 class NavDescription extends Component {
     render() {
@@ -8,7 +9,7 @@ class NavDescription extends Component {
         return (
             <div className="NavDescription">
                 <div className="NavDescription-Title">
-                    <span>{title}</span>
+                    {title}
                 </div>
                 {
                     commitInfo && (
@@ -26,7 +27,6 @@ class NavDescription extends Component {
 }
 
 NavDescription.defaultProps = {
-    title: 'arcadia',
     commitInfo: {
         hash: 'cggfh3',
         data: new Date().toString(),
@@ -34,4 +34,8 @@ NavDescription.defaultProps = {
     }
 };
 
-export default NavDescription;
+const mapStateToProps = (state) => ({
+    title: state.repositories.current
+});
+
+export default connect(mapStateToProps)(NavDescription);

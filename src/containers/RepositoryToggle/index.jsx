@@ -18,7 +18,12 @@ class RepositoryToggle extends Component {
     )
 
     render() {
-        const { repositories, current, } = this.props;
+        const { repositories, current } = this.props;
+
+        if (!current) {
+            return null;
+        }
+
         const button = (
             <Tab className="RepositoryToggle-Button">
                 Repository {current}
