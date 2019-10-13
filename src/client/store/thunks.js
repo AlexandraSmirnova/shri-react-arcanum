@@ -1,6 +1,8 @@
 import { fetchRepos, fetchTree, fetchFileContent } from "../apiService";
-import { setRepositories, setDirectoryContent, setDirectoryPath, setCurrentRepository, setFileData, clearFileData } from "./actions";
-
+import {
+    setRepositories, setDirectoryContent, setDirectoryPath, setCurrentRepository,
+    setFileData, clearFileData
+} from "./actions";
 
 
 export const setRepositoriesThunk = () => (dispatch) => 
