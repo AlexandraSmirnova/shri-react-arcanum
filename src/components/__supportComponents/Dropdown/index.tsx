@@ -10,7 +10,7 @@ import './styles.scss';
 interface Props {
     buttonItem: React.ReactNode;
     className?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 interface State {

@@ -4,7 +4,7 @@ import './styles.scss';
 
 interface Props {
     linkHref: string;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 class Link extends React.Component<Props> {

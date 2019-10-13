@@ -1,9 +1,19 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import * as classnames from 'classnames';
 import './styles.scss';
 
-class Table extends Component {
-    renderTableCell = (item) => (
+interface TableCell {
+    className: string;
+    content: React.ReactNode;
+};
+
+interface Props {
+    headers: TableCell[];
+    rows: TableCell[][];
+};
+
+class Table extends React.Component<Props> {
+    renderTableCell = (item: TableCell) => (
         <div className={classnames("Table-Cell", item.className)} >
             {item.content}
         </div>

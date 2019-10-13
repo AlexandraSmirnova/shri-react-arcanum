@@ -3,6 +3,7 @@ import AppState from './reducers';
 import { FileContent, ContentDirectoryData } from '../types';
 import { ActionType } from 'typesafe-actions';
 import * as actions  from './actions';
+import { ThunkDispatch } from 'redux-thunk';
 
 
 
@@ -32,3 +33,5 @@ export interface State {
 }
 
 export type ActionRedux = ActionType<typeof actions>;
+
+export type ThunkDispatchWrap = ThunkDispatch<State, void, Action>;
