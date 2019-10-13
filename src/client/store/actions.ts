@@ -1,10 +1,14 @@
 import { 
     SET_DIRECTORY_CONTENT, SET_DIRECTORY_PATH, SET_REPOSITORIES, SET_CURRENT_REPOSITORY,
-    SET_FILE_DATA, CLEAR_FILE_DATA
+    SET_FILE_DATA, CLEAR_FILE_DATA, INIT, INIT_FAILURE
 } from "./actionTypes";
 import { ContentDirectoryData, FileContent } from "../types";
 import { action } from 'typesafe-actions';
 
+
+export const init = () => action(INIT); 
+
+export const initFailure = () => action(INIT_FAILURE); 
 
 export const setRepositories = (repos: string[]) => action(SET_REPOSITORIES, repos);
 

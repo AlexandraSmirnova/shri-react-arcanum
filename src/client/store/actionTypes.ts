@@ -1,3 +1,6 @@
+export const INIT = 'INIT';
+export const INIT_FAILURE = 'INIT_FAILURE';
+
 export const SET_REPOSITORIES = 'SET_REPOSITORIES';
 export const SET_CURRENT_REPOSITORY = 'SET_CURRENT_REPOSITORY';
 
