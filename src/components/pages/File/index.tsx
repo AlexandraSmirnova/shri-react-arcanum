@@ -1,8 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 import FileEditor from '../../../containers/FileEditor';
 import Breadcrumbs from '../../../containers/Breadcrumbs';
+import { match } from 'react-router';
 
-const File = ({ match }) => {
+
+interface Props {
+    match: match<{ path: string }>
+}
+
+const File: React.FC<Props> = ({ match }) => {
     return (
         <div>
             <Breadcrumbs />

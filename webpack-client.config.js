@@ -7,7 +7,7 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 
 let config = {
     mode: DEBUG ? 'development' : 'production',
-    entry: './src/client/index.js',
+    entry: './src/client/index.tsx',
     target: 'node',
     output: {
         path: distPath,
