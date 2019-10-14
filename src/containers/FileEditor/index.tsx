@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import CodeFile from 'static/svg/codefile.svg'
 
 import { setFileContentThunk } from '../../client/store/thunks';
-import './styles.scss';
 import IconPlus from '../../components/__supportComponents/IconPlus';
 import Icon from '../../components/__supportComponents/Icon';
 import Error from '../../components/__supportComponents/Error';
+import { ThunkDispatchWrap, State } from '../../client/store/types';
+import { FileContent } from '../../client/types';
+import './styles.scss';
 
 
-class FileEditor extends Component {
-    componentWillUpdate(prevProps) {
+interface Props {
+    content: FileContent | null,
+    filePath: string;
+    name: string;
+    repo: string;
+    onLoadFile: (path: string) => void;
+};
+
+class FileEditor extends React.Component<Props> {
+    componentWillUpdate(prevProps: Props) {
         const { filePath, content, onLoadFile, repo } = this.props;
 
         if (!content && prevProps.repo !== repo) {
@@ -18,15 +28,16 @@ class FileEditor extends Component {
         }
     }
 
-    getLineView = (line, index) => (
+    getLineView = (line: string, index: number) => (
         <div className="FileRow">
-            <div className="FileRow-Number">{ index }</div>
-            <div className="FileRow-Content">{ line }</div>
+            <div className="FileRow-Number">{index}</div>
+            <div className="FileRow-Content">{line}</div>
         </div>
     )
 
     render() {
         const { content, name } = this.props;
+
         if (!content) {
             return <Error title="404" message="Файл не найден" />;
         }
@@ -43,22 +54,22 @@ class FileEditor extends Component {
                     </IconPlus>
                 </div>
                 <div className="FileEditor-Content Font Font_type_mono">
-                    { content.map(this.getLineView) }
+                    {content.map(this.getLineView)}
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
     name: state.file.name,
     path: state.directory.path,
     repo: state.repositories.current,
     content: state.file.content,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    onLoadFile: (path) => {
+const mapDispatchToProps = (dispatch: ThunkDispatchWrap) => ({
+    onLoadFile: (path: string) => {
         dispatch(setFileContentThunk(path))
     }
 })

@@ -4,11 +4,11 @@ import './styles';
 
 
 interface Props {
-    className: string;
+    className?: string;
     icon: React.ReactNode;
     iconMod: string;
     right?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 class IconPlus extends React.Component<Props> {
