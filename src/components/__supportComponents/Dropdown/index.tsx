@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import * as classnames from 'classnames';
-import Arrow from 'static/svg/arrow.svg';
+import Arrow from 'static/svg/Arrow.svg';
 import IconPlus from '../IconPlus';
 import Icon from '../Icon';
 
 import './styles.scss';
 
 
-class Dropdown extends Component {
+interface Props {
+    buttonItem: React.ReactNode;
+    className?: string;
+    onClick?: () => void;
+}
+
+interface State {
+    isOpened: boolean;
+}
+
+class Dropdown extends React.Component<Props, State> {
     state = {
         isOpened: false,
     }

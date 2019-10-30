@@ -1,8 +1,25 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Link from '../__supportComponents/Link';
 import './styles.scss';
 
-class Footer extends Component {
+
+interface Props {
+    text: string;
+    copyright: string;
+    linkHref: string;
+    linkText: string;
+    version: string;
+};
+
+class Footer extends React.Component<Props> {
+    static defaultProps = {
+        text: 'Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021',
+        version: 'UI: 0.1.15',
+        copyright: '© 2007—2019',
+        linkHref: 'https://yandex.ru',
+        linkText: 'Yandex'
+    };
+
     render() {
         const { text, copyright, linkHref, linkText, version } = this.props;
 
@@ -18,14 +35,6 @@ class Footer extends Component {
             </div>
         );
     }
-}
-
-Footer.defaultProps = {
-    text: 'Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021',
-    version: 'UI: 0.1.15',
-    copyright: '© 2007—2019',
-    linkHref: 'https://yandex.ru',
-    linkText: 'Yandex'
 }
 
 export default Footer;

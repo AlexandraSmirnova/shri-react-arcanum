@@ -1,11 +1,30 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import Link from '../../components/__supportComponents/Link';
+import { State } from '../../client/store/types';
 import './styles.scss';
 
-class NavDescription extends Component {
+
+interface Props {
+    title: string;
+    commitInfo: {
+        hash: string;
+        data: string;
+        author: string;
+    }
+};
+
+class NavDescription extends React.Component<Props> {
+    static defaultProps = {
+        commitInfo: {
+            hash: 'cggfh3',
+            data: new Date().toString(),
+            author: 'robot-srch-releaser'
+        }
+    };
+
     render() {
-        const { title, dropdownProps, commitInfo } = this.props;
+        const { title,  commitInfo } = this.props;
         return (
             <div className="NavDescription">
                 <div className="NavDescription-Title">
@@ -26,15 +45,7 @@ class NavDescription extends Component {
     }
 }
 
-NavDescription.defaultProps = {
-    commitInfo: {
-        hash: 'cggfh3',
-        data: new Date().toString(),
-        author: 'robot-srch-releaser'
-    }
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
     title: state.repositories.current
 });
 

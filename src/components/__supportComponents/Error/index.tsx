@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import './styles.scss';
 
-class Error extends Component {
+interface Props {
+    title: string;
+    message: string;
+};
+
+class Error extends React.Component<Props> {
     render() {
         const { title, message } = this.props;
 

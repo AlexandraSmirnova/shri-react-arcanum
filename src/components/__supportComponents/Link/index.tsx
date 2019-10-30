@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import './styles.scss';
 
-class Link extends Component {
+
+interface Props {
+    linkHref: string;
+    onClick?: () => void;
+};
+
+class Link extends React.Component<Props> {
     render() {
         const { children, linkHref, onClick } = this.props;
 

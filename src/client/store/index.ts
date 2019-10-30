@@ -1,11 +1,12 @@
 import rootReducer from './reducers';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Middleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { initThunk } from './thunks';
+import { ThunkDispatchWrap } from './types';
 
 
-const middlewares = [thunk];
+const middlewares: Middleware[] = [thunk];
 
 if (process.env.NODE_ENV === 'development') {
     middlewares.push(logger);
@@ -13,6 +14,6 @@ if (process.env.NODE_ENV === 'development') {
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
-store.dispatch(initThunk());
+(store.dispatch as ThunkDispatchWrap)(initThunk());
 
 export default store;

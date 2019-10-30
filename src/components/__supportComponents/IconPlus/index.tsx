@@ -1,8 +1,21 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import * as classnames from 'classnames';
 import './styles';
 
-class IconPlus extends Component {
+
+interface Props {
+    className?: string;
+    icon: React.ReactNode;
+    iconMod: string;
+    right?: boolean;
+    onClick?: () => void;
+};
+
+class IconPlus extends React.Component<Props> {
+    static defaultProps = {
+        iconMod: "indent-l_s",
+    }
+
     render() {
         const { className, icon, iconMod, children, onClick, right } = this.props;
         const ch = classnames(
@@ -24,10 +37,6 @@ class IconPlus extends Component {
             </div>
         );
     }
-}
-
-IconPlus.defaultProps = {
-    iconMod: "indent-l_s" 
 }
 
 export default IconPlus;

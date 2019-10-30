@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import * as classnames from 'classnames';
 import './styles.scss';
 
-class Tab extends Component {
+
+interface Props {
+    className: string;
+};
+
+class Tab extends React.Component<Props> {
     render() {
         const { className, children } = this.props;
         const ch = classnames(
