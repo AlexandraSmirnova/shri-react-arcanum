@@ -24,17 +24,6 @@ let config = {
                 loader: "ts-loader"
             },
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    presets: ['@babel/env', '@babel/react'],
-                    plugins: [
-                        ["@babel/plugin-proposal-class-properties", { "loose": true }]
-                    ]
-                }
-            },
-            {
                 test: /\.svg$/,
                 loader: 'svg-react-loader'
             },

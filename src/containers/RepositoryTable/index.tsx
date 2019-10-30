@@ -9,7 +9,7 @@ import { setDirectoryContentThunk, setFileContentThunk } from '../../client/stor
 import { ThunkDispatchWrap, State } from '../../client/store/types';
 import { ContentDirectoryData } from '../../client/types';
 
-const extraCellClassNames = {
+const extraCellClassNames: {[key: number]: string} = {
     2: 'Table-Cell_fraction_col-2',
     4: 'Table-Cell_align_right'
 };
@@ -34,8 +34,7 @@ class RepositoryTable extends React.Component<Props> {
 
     getTableCellItem = (item: React.ReactNode, index: number) => ({
         content: item,
-        className: index == 2 || index == 4
-            ? extraCellClassNames[index] : '',
+        className: index in extraCellClassNames ? extraCellClassNames[index] : '',
     })
 
     getPathToItem = (item: ContentDirectoryData) => {
