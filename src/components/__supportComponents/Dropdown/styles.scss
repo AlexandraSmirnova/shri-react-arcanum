@@ -3,7 +3,7 @@
     &-Button {
         height: 100%;
         cursor: pointer;
-        user-select: none; 
+        user-select: none;
     }
 
     &-Block {
@@ -20,6 +20,15 @@
 
         &_state_open {
             display: block;
+        }
+    }
+
+    &-Icon {
+        width: 10px;
+        height: 100%;
+
+        &_state_open {
+            transform: rotate(180deg);
         }
     }
 }

@@ -5,6 +5,7 @@ import IconPlus from '../IconPlus';
 import Icon from '../Icon';
 
 import './styles.scss';
+import { findDOMNode } from 'react-dom';
 
 
 interface Props {
@@ -20,6 +21,34 @@ interface State {
 class Dropdown extends React.Component<Props, State> {
     state = {
         isOpened: false,
+    }
+
+    private componentNode: Element | null | Text = null;
+
+    public componentDidMount() {
+        this.componentNode = findDOMNode(this);
+        window.addEventListener('click', this.handleOutsideClick, true);
+    }
+
+    public componentWillUnmount() {
+        window.removeEventListener('click', this.handleOutsideClick, true);
+    }
+
+    handleOutsideClick = (e: MouseEvent) => {
+        let outsideClick = true;
+        let el = e.target as Node;
+
+        while (el && el.parentNode) {
+            if (el === this.componentNode) {
+                outsideClick = false;
+                break;
+            }
+            el = el.parentNode;
+        }
+
+        if (outsideClick) {
+            this.setState({ isOpened: false });
+        }
     }
 
     handleClick = () => {
@@ -49,7 +78,8 @@ class Dropdown extends React.Component<Props, State> {
         );
 
         const iconCh = classnames(
-            isOpened && 'Icon_rotate_180'
+            'Dropdown-Icon', 
+            isOpened && 'Dropdown-Icon_state_open'
         );
 
         return (
