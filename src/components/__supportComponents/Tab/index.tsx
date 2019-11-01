@@ -5,10 +5,10 @@ import './styles.scss';
 
 interface Props {
     className: string;
-};
+}
 
 class Tab extends React.Component<Props> {
-    render() {
+    public render() {
         const { className, children } = this.props;
         const ch = classnames(
             'Tab',

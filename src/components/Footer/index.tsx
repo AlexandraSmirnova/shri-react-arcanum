@@ -9,18 +9,18 @@ interface Props {
     linkHref: string;
     linkText: string;
     version: string;
-};
+}
 
 class Footer extends React.Component<Props> {
-    static defaultProps = {
+    public static defaultProps = {
         text: 'Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021',
         version: 'UI: 0.1.15',
         copyright: '© 2007—2019',
         linkHref: 'https://yandex.ru',
-        linkText: 'Yandex'
+        linkText: 'Yandex',
     };
 
-    render() {
+    public render() {
         const { text, copyright, linkHref, linkText, version } = this.props;
 
         return (

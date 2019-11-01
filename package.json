@@ -13,7 +13,8 @@
     "build": "yarn clean && yarn build:client && yarn build:server && yarn start:server",
     "clean": "rimraf build",
     "test": "hermione",
-    "gui": "hermione gui"
+    "gui": "hermione gui",
+    "lint": "tslint --project tsconfig.json --format stylish"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
@@ -28,9 +29,6 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
-    "hermione": "^2.13.0",
-    "hermione-custom-commands": "file:hermione-custom-commands",
-    "html-reporter": "^5.0.1",
     "mocha": "^6.2.1",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.12.0",
@@ -39,6 +37,7 @@
     "style-loader": "^1.0.0",
     "svg-react-loader": "^0.4.6",
     "ts-loader": "^6.2.0",
+    "tslint": "^5.20.0",
     "typesafe-actions": "^4.4.2",
     "typescript": "^3.6.4",
     "url-loader": "^2.1.0",

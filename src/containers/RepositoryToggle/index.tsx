@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Tab from '../../components/__supportComponents/Tab';
-import Dropdown from '../../components/__supportComponents/Dropdown';
 import { setCurrentRepositoryThunk } from '../../client/store/thunks';
 import { State, ThunkDispatchWrap } from '../../client/store/types';
+import Dropdown from '../../components/__supportComponents/Dropdown';
+import Tab from '../../components/__supportComponents/Tab';
 
 import './styles.scss';
-
 
 interface Props {
     current: string;
     repositories: string[];
     onRepositorySelect: (item: string) => void;
-};
+}
 
 class RepositoryToggle extends React.Component<Props> {
-    renderListItem = (item: string) => (
+    public renderListItem = (item: string) => (
         <div
             className="RepositoryToggle-Item"
             onClick={() => this.props.onRepositorySelect(item)}
@@ -25,7 +24,7 @@ class RepositoryToggle extends React.Component<Props> {
         </div>
     )
 
-    render() {
+    public render() {
         const { repositories, current } = this.props;
 
         if (!current) {
@@ -56,12 +55,12 @@ class RepositoryToggle extends React.Component<Props> {
 const mapStateToProps = (state: State) => ({
     repositories: state.repositories.all,
     current: state.repositories.current,
-})
+});
 
 const mapDispatchToProps = (dispatch: ThunkDispatchWrap) => ({
     onRepositorySelect: (item: string) => {
         dispatch(setCurrentRepositoryThunk(item));
-    }
-})
+    },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepositoryToggle);

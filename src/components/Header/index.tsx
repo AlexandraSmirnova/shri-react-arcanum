@@ -7,10 +7,10 @@ import { Link as RouterLink } from 'react-router-dom';
 
 
 class Header extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="Header">
-                <RouterLink to='/'>
+                <RouterLink to="/">
                     <Icon className="Header-Logo">
                         <Logo />
                     </Icon>

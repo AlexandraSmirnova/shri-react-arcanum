@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import File from 'static/svg/file.svg';
 import Folder from 'static/svg/folder.svg';
-import Table from '../../components/Table';
-import IconPlus from '../../components/__supportComponents/IconPlus';
 import { setDirectoryContentThunk, setFileContentThunk } from '../../client/store/thunks';
-import { ThunkDispatchWrap, State } from '../../client/store/types';
+import { State, ThunkDispatchWrap } from '../../client/store/types';
 import { ContentDirectoryData } from '../../client/types';
+import IconPlus from '../../components/__supportComponents/IconPlus';
+import Table from '../../components/Table';
 
 const extraCellClassNames: {[key: number]: string} = {
     2: 'Table-Cell_fraction_col-2',
-    4: 'Table-Cell_align_right'
+    4: 'Table-Cell_align_right',
 };
 
 const headers = ['Name', 'Last commit', 'Commit message', 'Commitier', 'Updater'];
@@ -25,34 +25,34 @@ interface Props {
 }
 
 class RepositoryTable extends React.Component<Props> {
-    componentWillUpdate() {
+    public componentWillUpdate() {
         const { contentPath, onСhangeDirectory, path } = this.props;
         if (contentPath && contentPath !== path) {
             onСhangeDirectory(contentPath);
         }
     }
 
-    getTableCellItem = (item: React.ReactNode, index: number) => ({
-        content: item,
+    public getTableCellItem = (item: React.ReactNode, index: number) => ({
         className: index in extraCellClassNames ? extraCellClassNames[index] : '',
+        content: item,
     })
 
-    getPathToItem = (item: ContentDirectoryData) => {
+    public getPathToItem = (item: ContentDirectoryData) => {
         const { path } = this.props;
         return path ? `${path}/${item.name}` : item.name;
     }
 
-    handleDirectoryClick = (pathToItem: string) => () => {
-        const { onСhangeDirectory } = this.props;;
+    public handleDirectoryClick = (pathToItem: string) => () => {
+        const { onСhangeDirectory } = this.props;
         onСhangeDirectory(pathToItem);
     }
 
-    handleFileClick = (pathToItem: string) => () => {
-        const { onFileClick } = this.props;;
+    public handleFileClick = (pathToItem: string) => () => {
+        const { onFileClick } = this.props;
         onFileClick(pathToItem);
     }
 
-    wrapContentItem = (item: ContentDirectoryData) => {
+    public wrapContentItem = (item: ContentDirectoryData) => {
         const icon = item.isDirectory ? <Folder /> : <File />;
         const pathToItem = this.getPathToItem(item);
 
@@ -87,16 +87,16 @@ class RepositoryTable extends React.Component<Props> {
                 </IconPlus>
             ),
             <RouterLink to={`/file/${item.name}`} className="Link">43dfse</RouterLink>,
-            "Some fixes was commited",
-            "Author",
-            "2 days ago"
+            'Some fixes was commited',
+            'Author',
+            '2 days ago',
         ].map(this.getTableCellItem);
     }
 
-    render() {
+    public render() {
         const { content } = this.props;
         const tableRows = content
-            .map(this.wrapContentItem)
+            .map(this.wrapContentItem);
 
         return (
             <Table
@@ -110,15 +110,15 @@ class RepositoryTable extends React.Component<Props> {
 const mapStateToProps = (state: State) => ({
     path: state.directory.path,
     content: state.directory.content,
-})
+});
 
 const mapDispatchToProps = (dispatch: ThunkDispatchWrap) => ({
     onСhangeDirectory: (path: string) => {
         dispatch(setDirectoryContentThunk(path));
     },
     onFileClick: (path: string) => {
-        dispatch(setFileContentThunk(path))
-    }
-})
+        dispatch(setFileContentThunk(path));
+    },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepositoryTable);

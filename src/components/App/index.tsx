@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import Main from '../pages/Main';
@@ -8,7 +8,7 @@ import './styles.scss';
 
 
 class App extends React.Component {
-    render() {
+    public render() {
         return (
             <div className="App">
                 <Header />

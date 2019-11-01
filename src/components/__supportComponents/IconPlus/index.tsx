@@ -9,14 +9,14 @@ interface Props {
     iconMod: string;
     right?: boolean;
     onClick?: () => void;
-};
+}
 
 class IconPlus extends React.Component<Props> {
     static defaultProps = {
-        iconMod: "indent-l_s",
-    }
+        iconMod: 'indent-l_s',
+    };
 
-    render() {
+    public render() {
         const { className, icon, iconMod, children, onClick, right } = this.props;
         const ch = classnames(
             'IconPlus',
@@ -25,8 +25,8 @@ class IconPlus extends React.Component<Props> {
         );
         const iconCh = classnames(
             'IconPlus-Icon',
-            `IconPlus-Icon_${iconMod}`
-        )
+            `IconPlus-Icon_${iconMod}`,
+        );
 
         return (
             <div className={ch} onClick={onClick}>

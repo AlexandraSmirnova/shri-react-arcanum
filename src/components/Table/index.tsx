@@ -5,21 +5,21 @@ import './styles.scss';
 interface TableCell {
     className: string;
     content: React.ReactNode;
-};
+}
 
 interface Props {
     headers: TableCell[];
     rows: TableCell[][];
-};
+}
 
 class Table extends React.Component<Props> {
-    renderTableCell = (item: TableCell) => (
-        <div className={classnames("Table-Cell", item.className)} >
+    public renderTableCell = (item: TableCell) => (
+        <div className={classnames('Table-Cell', item.className)} >
             {item.content}
         </div>
-    );
+    )
 
-    render() {
+    public render() {
         const { headers, rows } = this.props;
 
         return (

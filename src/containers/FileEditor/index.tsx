@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import CodeFile from 'static/svg/codefile.svg'
+import CodeFile from 'static/svg/codefile.svg';
 
 import { setFileContentThunk } from '../../client/store/thunks';
 import IconPlus from '../../components/__supportComponents/IconPlus';
@@ -12,15 +12,15 @@ import './styles.scss';
 
 
 interface Props {
-    content: FileContent | null,
+    content: FileContent | null;
     filePath: string;
     name: string;
     repo: string;
     onLoadFile: (path: string) => void;
-};
+}
 
 class FileEditor extends React.Component<Props> {
-    componentWillUpdate(prevProps: Props) {
+    public componentWillUpdate(prevProps: Props) {
         const { filePath, content, onLoadFile, repo } = this.props;
 
         if (!content && prevProps.repo !== repo) {
@@ -28,14 +28,14 @@ class FileEditor extends React.Component<Props> {
         }
     }
 
-    getLineView = (line: string, index: number) => (
+    public getLineView = (line: string, index: number) => (
         <div className="FileRow">
             <div className="FileRow-Number">{index}</div>
             <div className="FileRow-Content">{line}</div>
         </div>
     )
 
-    render() {
+    public render() {
         const { content, name } = this.props;
 
         if (!content) {
@@ -66,12 +66,12 @@ const mapStateToProps = (state: State) => ({
     path: state.directory.path,
     repo: state.repositories.current,
     content: state.file.content,
-})
+});
 
 const mapDispatchToProps = (dispatch: ThunkDispatchWrap) => ({
     onLoadFile: (path: string) => {
-        dispatch(setFileContentThunk(path))
-    }
-})
+        dispatch(setFileContentThunk(path));
+    },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FileEditor);

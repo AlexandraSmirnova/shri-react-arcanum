@@ -4,10 +4,10 @@ import './styles.scss';
 interface Props {
     title: string;
     message: string;
-};
+}
 
 class Error extends React.Component<Props> {
-    render() {
+    public render() {
         const { title, message } = this.props;
 
         return (

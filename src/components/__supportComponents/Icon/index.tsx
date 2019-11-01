@@ -7,10 +7,10 @@ interface Props {
 }
 
 class Icon extends React.Component<Props> {
-    render() {
+    public render() {
         const { children, className } = this.props;
-        const ch = classnames("Icon", className);
-        
+        const ch = classnames('Icon', className);
+
         return (
             <div className={ch}>
                 {children}

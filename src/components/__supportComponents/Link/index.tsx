@@ -5,10 +5,10 @@ import './styles.scss';
 interface Props {
     linkHref: string;
     onClick?: () => void;
-};
+}
 
 class Link extends React.Component<Props> {
-    render() {
+    public render() {
         const { children, linkHref, onClick } = this.props;
 
         if (linkHref) {
@@ -16,7 +16,7 @@ class Link extends React.Component<Props> {
                 <a className="Link" href={linkHref}>
                     {children}
                 </a>
-            ); 
+            );
         }
 
         return (

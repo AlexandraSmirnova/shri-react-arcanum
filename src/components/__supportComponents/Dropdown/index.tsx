@@ -21,55 +21,15 @@ interface State {
 class Dropdown extends React.Component<Props, State> {
     state = {
         isOpened: false,
-    }
+    };
 
-    private componentNode: Element | null | Text = null;
-
-    public componentDidMount() {
-        this.componentNode = findDOMNode(this);
-        window.addEventListener('click', this.handleOutsideClick, true);
-    }
-
-    public componentWillUnmount() {
-        window.removeEventListener('click', this.handleOutsideClick, true);
-    }
-
-    handleOutsideClick = (e: MouseEvent) => {
-        let outsideClick = true;
-        let el = e.target as Node;
-
-        while (el && el.parentNode) {
-            if (el === this.componentNode) {
-                outsideClick = false;
-                break;
-            }
-            el = el.parentNode;
-        }
-
-        if (outsideClick) {
-            this.setState({ isOpened: false });
-        }
-    }
-
-    handleClick = () => {
-        const { onClick } = this.props;
-
-        if (onClick) {
-            onClick();
-        }
-
-        this.setState({
-            isOpened: !this.state.isOpened,
-        })
-    }
-
-    render() {
+    public render() {
         const { buttonItem, children, className } = this.props;
         const { isOpened } = this.state;
 
         const mainCh = classnames(
             'Dropdown',
-            className
+            className,
         );
 
         const blockCh = classnames(
@@ -78,8 +38,8 @@ class Dropdown extends React.Component<Props, State> {
         );
 
         const iconCh = classnames(
-            'Dropdown-Icon', 
-            isOpened && 'Dropdown-Icon_state_open'
+            'Dropdown-Icon',
+            isOpened && 'Dropdown-Icon_state_open',
         );
 
         return (
@@ -96,6 +56,46 @@ class Dropdown extends React.Component<Props, State> {
                 </div>
             </div>
         );
+    }
+
+    private componentNode: Element | null | Text = null;
+
+    public componentDidMount() {
+        this.componentNode = findDOMNode(this);
+        window.addEventListener('click', this.handleOutsideClick, true);
+    }
+
+    public componentWillUnmount() {
+        window.removeEventListener('click', this.handleOutsideClick, true);
+    }
+
+    public handleOutsideClick = (e: MouseEvent) => {
+        let outsideClick = true;
+        let el = e.target as Node;
+
+        while (el && el.parentNode) {
+            if (el === this.componentNode) {
+                outsideClick = false;
+                break;
+            }
+            el = el.parentNode;
+        }
+
+        if (outsideClick) {
+            this.setState({ isOpened: false });
+        }
+    }
+
+    public handleClick = () => {
+        const { onClick } = this.props;
+
+        if (onClick) {
+            onClick();
+        }
+
+        this.setState({
+            isOpened: !this.state.isOpened,
+        });
     }
 }
 

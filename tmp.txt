@@ -1,0 +1,5 @@
+[true, {
+            "import-sources-order": "lowercase-last",
+            "module-source-path": "full",
+            "named-imports-order": "lowercase-last"
+        }],

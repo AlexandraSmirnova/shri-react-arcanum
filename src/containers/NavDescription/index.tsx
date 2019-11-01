@@ -11,20 +11,20 @@ interface Props {
         hash: string;
         data: string;
         author: string;
-    }
-};
+    };
+}
 
 class NavDescription extends React.Component<Props> {
     static defaultProps = {
         commitInfo: {
             hash: 'cggfh3',
             data: new Date().toString(),
-            author: 'robot-srch-releaser'
-        }
+            author: 'robot-srch-releaser',
+        },
     };
 
-    render() {
-        const { title,  commitInfo } = this.props;
+    public render() {
+        const { title, commitInfo } = this.props;
         return (
             <div className="NavDescription">
                 <div className="NavDescription-Title">
@@ -46,7 +46,7 @@ class NavDescription extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: State) => ({
-    title: state.repositories.current
+    title: state.repositories.current,
 });
 
 export default connect(mapStateToProps)(NavDescription);
